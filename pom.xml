@@ -110,7 +110,7 @@
                 </execution>
             </executions>
             <configuration>
-                <!-- Укажи свой главный класс с методом main -->
+                <!-- Указать свой главный класс с методом main -->
                 <mainClass>com.example.grpc.App</mainClass>
             </configuration>
         </plugin>            
