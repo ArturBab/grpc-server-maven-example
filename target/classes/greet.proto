@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.example.grpc;
+
+// Определение сообщения запроса
+message HelloRequest {
+  string name = 1;
+}
+
+// Определение сообщения ответа
+message HelloResponse {
+  string message = 1;
+}
+
+// Определение сервиса
+service GreeterService {
+  rpc SayHello (HelloRequest) returns (HelloResponse);
+}
