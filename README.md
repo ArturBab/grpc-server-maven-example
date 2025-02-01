@@ -20,7 +20,7 @@
     <protobuf.version>3.24.0</protobuf.version>
   </properties>
 ```
-4. Затем добавляем зависимости ``` dependencies ```:
+4. Затем добавляем нужные нам зависимости ``` dependencies ```:
 ```xml
         <!-- gRPC dependencies -->
         <dependency>
@@ -52,3 +52,60 @@
     <dependency>
 ```
 VS Code, в моем случае, будет бомбить на эту, якобы, ошибку ```${protobuf.version}```, но не парьтесь. 
+5. Добавляем нужные нам плагины для компиляции. Там будет плейсхолдер с менеджером, но его надо убрать. А вообще проще скопировать у меня:
+```xml
+    <build>
+        <plugins>
+            <!-- Compiler plugin -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+            </plugin>
+            <!-- Protobuf plugin -->
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.6.1</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:windows-x86_64</protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:windows-x86_64</pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        <!-- Exec Maven Plugin -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>java</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <!-- Укажи свой главный класс с методом main -->
+                <mainClass>com.example.grpc.App</mainClass>
+            </configuration>
+        </plugin>            
+        </plugins>
+    </build>
+```
+Кстати, учтите, что я здесь использую винду, поэтому здесь:
+```xml
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:windows-x86_64</protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:windows-x86_64</pluginArtifact>
+                </configuration>
+```
+Это конфигурация для компиляции на винде. В маке и в линуксе должно автоматически стоять.
