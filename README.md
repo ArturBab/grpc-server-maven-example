@@ -51,3 +51,4 @@
         </dependency>  
     <dependency>
 ```
+VS Code, в моем случае, будет бомбить на эту, якобы, ошибку ```${protobuf.version}```, но не парьтесь. 
