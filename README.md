@@ -19,7 +19,7 @@
     <grpc.version>1.57.0</grpc.version>
     <protobuf.version>3.24.0</protobuf.version>
   </properties>
-
+.```
 4. Затем добавляем зависимости ``` dependencies ```:
 ```xml
         <!-- gRPC dependencies -->
@@ -50,3 +50,4 @@
             <version>1.3.2</version>
         </dependency>  
     <dependency>
+.```
