@@ -53,7 +53,7 @@
 ```
 VS Code, в моем случае, будет бомбить на эту, якобы, ошибку ```${protobuf.version}```, но не парьтесь. 
 
-5. Добавляем нужные нам плагины для компиляции. Там будет плейсхолдер с менеджером, но его надо убрать. А вообще проще скопировать у меня:
+5. Добавляем нужные нам плагины для компиляции proto-файлов. Там будет плейсхолдер с менеджером, но его надо убрать. А вообще проще скопировать у меня:
 ```xml
     <build>
         <plugins>
@@ -82,6 +82,7 @@ VS Code, в моем случае, будет бомбить на эту, яко
                 </executions>
             </plugin>
         <!-- Exec Maven Plugin -->
+        <!-- Для запуска сервера с терминала -->
         <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
@@ -109,4 +110,19 @@ VS Code, в моем случае, будет бомбить на эту, яко
   <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:windows-x86_64</pluginArtifact>
 </configuration>
 ```
-Это конфигурация для компиляции на винде. В маке и в линуксе должно автоматически стоять.
+Это конфигурация для компиляции на винде. В маке и в линуксе она должна автоматически стоять.
+
+6. Пишем в терминале команду ```mvn clean install```. Сборщик maven автоматически пересоздаст и установит уже нужные библиотеки и зависимости для работы.
+P.S. 
+Забыл сказать, что VS Code может тупеть, особенно когда нужно будет генерировать proto-файлы. Тогда лучше перед пересборкой еще в ```.vscode``` прописать такие настройки:
+```json
+{
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "java.project.sourcePaths": [
+    "src/main/java",
+    "target/generated-sources/protobuf/java",
+    "target/generated-sources/protobuf/grpc-java"
+  ],
+  "java.compile.nullAnalysis.mode": "automatic"
+}
+```
