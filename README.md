@@ -18,4 +18,4 @@
     <grpc.version>1.57.0</grpc.version>
     <protobuf.version>3.24.0</protobuf.version>
   </properties>
-.```
+
