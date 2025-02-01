@@ -3,6 +3,10 @@
 ### Инструкция, как настроить и создать простой maven-проект с gRPC.
 
 1. В терминале указываем путь для будущего проекта, затем пишем команду:
-> mvn archetype:generate -DgroupId=com.example.<em>####exampleName</em> -DartifactId=<em>exampleName</em> -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+> mvn archetype:generate -DgroupId=com.example.<em>exampleName</em> -DartifactId=<em>exampleName</em> -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 >
 >> <em>exampleName</em> - это собственное название пакетов. Очев, что на английском пишем.
+
+Запускаем и maven создаст.
+
+2. Открываем VS Code (я использую его), экспортируем и ####ДОВЕРЯЕМ (Это важнА)!!
