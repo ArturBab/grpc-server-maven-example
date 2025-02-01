@@ -103,10 +103,10 @@ VS Code, в моем случае, будет бомбить на эту, яко
 ```
 Кстати, учтите, что я здесь использую винду, поэтому здесь:
 ```xml
-                <configuration>
-                    <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:windows-x86_64</protocArtifact>
-                    <pluginId>grpc-java</pluginId>
-                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:windows-x86_64</pluginArtifact>
-                </configuration>
+<configuration>
+  <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:windows-x86_64</protocArtifact>
+  <pluginId>grpc-java</pluginId>
+  <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:windows-x86_64</pluginArtifact>
+</configuration>
 ```
 Это конфигурация для компиляции на винде. В маке и в линуксе должно автоматически стоять.
