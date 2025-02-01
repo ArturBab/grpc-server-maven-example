@@ -11,5 +11,5 @@
 
 2. Открываем VS Code (я использую его), экспортируем и **ДОВЕРЯЕМ (Это важнА)!!**
 3. После этого, открываем файл **_pom.xml_** и в плейсхолдере **__<properties> ... </properties>__** добавляем эти значения:
->> <grpc.version>1.57.0</grpc.version>
->> <protobuf.version>3.24.0</protobuf.version>   
+ > <grpc.version>1.57.0</grpc.version>
+ <protobuf.version>3.24.0</protobuf.version>   
